@@ -1,0 +1,72 @@
+ Concepts Implemented – Checklist
+ 
+✅ React (Core)
+ Functional Components
+
+ useState, useEffect
+
+ useContext, useReducer
+
+ useRef, useCallback, useMemo
+
+ Custom Hooks (e.g., useDebounce, useTheme)
+
+ Lazy Loading (React.lazy, Suspense)
+
+ Error Boundaries
+
+✅ Redux (Modern)
+
+ Redux Toolkit Setup
+
+ createSlice, createAsyncThunk
+
+ Connect Redux to Components
+
+ Persist data using localStorage
+
+✅ JavaScript Core
+
+ Promises & Async/Await
+
+ Closures & Lexical Scope
+
+ this keyword in different contexts
+
+ Callback vs Promise vs Async/Await
+
+ Event Loop & Micro/Macro Tasks (Glossary + Code Sample)
+
+ Debounce & Throttle (with examples)
+
+✅ CSS/Responsive
+
+ Tailwind CSS Utility-first Design
+
+ Mobile Responsive Layout
+
+ Flex/Grid
+
+ Animations on buttons/cards
+
+ Dark/Light Theme
+
+✅ Optimization
+
+ Memoization using React.memo, useMemo
+
+ Debouncing user input
+
+ Lazy-load pages
+
+ Code splitting with React.lazy
+
+✅ UI/UX
+
+ Reusable Components (Card, Button, Modal)
+
+ Keyboard navigation & accessibility
+
+ Theming (light/dark)
+
+ Icons with react-icons
