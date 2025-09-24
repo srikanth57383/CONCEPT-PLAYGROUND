@@ -1,0 +1,69 @@
+1️⃣ Core String Methods to Master
+
+Strings in JS are immutable → methods return a new string, not modify the original.
+
+// ---------------------------------------------------------       🔹 Searching.     ------------------------------------------------------>1
+
+const str = "hello world";
+
+// indexOf() → First occurrence
+str.indexOf("o"); // 4
+
+// lastIndexOf() → Last occurrence
+str.lastIndexOf("o"); // 7
+
+// includes() → Check substring
+str.includes("world"); // true
+
+// startsWith() / endsWith()
+str.startsWith("he"); // true
+str.endsWith("ld"); // true
+
+// ---------------------------------------------------------       🔹 Transformation.     ------------------------------------------------------>2
+// toUpperCase() / toLowerCase()
+str.toUpperCase(); // "HELLO WORLD"
+str.toLowerCase(); // "hello world"
+
+// trim() → remove spaces
+"  hello  ".trim(); // "hello"
+
+// padStart() / padEnd()
+"5".padStart(3, "0"); // "005"
+"5".padEnd(3, "0");   // "500"
+
+// repeat()
+"ha".repeat(3); // "hahaha"
+
+
+// ---------------------------------------------------------       🔹 Extracting.     ------------------------------------------------------>3
+
+// slice(start, end)
+str.slice(0, 5); // "hello"
+
+// substring(start, end)
+str.substring(0, 5); // "hello"
+
+// substr(start, length) [legacy]
+str.substr(0, 5); // "hello"
+
+
+// ---------------------------------------------------------       🔹 Splitting & Joining.     ------------------------------------------------------>4
+// split() → String → Array
+str.split(" "); // ["hello", "world"]
+
+// join() is Array method, but often used with split()
+["hello", "world"].join("-"); // "hello-world"
+
+
+// ---------------------------------------------------------       🔹 Regex Power.     ------------------------------------------------------ 5
+str.match(/o/g); // ["o", "o"]
+str.replace("world", "JS"); // "hello JS"
+str.search(/wo/); // 6
+
+
+📌 Core String Methods to Master:
+	•	Searching → indexOf, lastIndexOf, includes, startsWith, endsWith
+	•	Transformation → toUpperCase, toLowerCase, trim, padStart, padEnd, repeat
+	•	Extracting → slice, substring, substr
+	•	Splitting → split, (join via Array)
+	•	Regex → match, replace, search

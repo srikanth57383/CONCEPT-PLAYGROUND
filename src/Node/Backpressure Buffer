@@ -1,0 +1,65 @@
+// 1. 🟢 Buffer in Node.js
+// 	•	A Buffer is a raw binary data container in Node.js.
+// 	•	Used when dealing with streams (file system, network, etc.) because data doesn’t always come in one chunk.
+// 	•	Buffers are fixed-size memory allocations outside the V8 heap (handled by Node.js).
+
+// Example:
+// const buf = Buffer.from("Hello");
+// console.log(buf);       // <Buffer 48 65 6c 6c 6f>
+// console.log(buf.toString()); // "Hello"
+
+// 👉 Interview tip:
+// 	•	Buffers let Node handle binary data (like images, files) efficiently.
+
+// 2. 🟡 What is Backpressure?
+// 	•	Backpressure happens when the receiving side of a stream cannot handle data as fast as the source is sending it.
+// 	•	Think of it as: Producer is too fast, consumer is too slow.
+// 	•	If not handled, it can lead to:
+// 	•	High memory usage.
+// 	•	Crashes (too many chunks buffered in memory).
+
+// 👉 Example:
+// 	•	You’re reading a huge file and writing it to a network socket.
+// 	•	If the network is slow, data piles up in memory → backpressure.
+
+// ⸻
+
+// 3. 🔴 How Node.js Handles Backpressure (pipe())
+// 	•	Streams in Node.js have built-in mechanisms to handle backpressure.
+// 	•	The method readableStream.pipe(writableStream) automatically:
+// 	1.	Pauses the readable stream when the writable is overwhelmed.
+// 	2.	Resumes when the writable is ready again.
+// 	3.	Prevents memory overload.
+
+
+// Example without pipe (bad):
+//  const fs = require('fs');
+// const readStream = fs.createReadStream('largeFile.txt');
+// const writeStream = fs.createWriteStream('output.txt');
+//  If writable.write() is slower, memory can fill up.
+
+// Example with pipe (good):
+// const fs = require('fs');
+// const readStream = fs.createReadStream('largeFile.txt');
+// const writeStream = fs.createWriteStream('output.txt');
+// ✅ Backpressure handled automatically
+// readStream.pipe(writeStream);
+// 👉 With .pipe(), Node will:
+// 	•	Stop reading if the writable is busy.
+// 	•	Resume once writable drains data.
+
+// 5. 📝 Interview-Ready Summary
+// 	•	Buffer: Temporary storage for binary data in memory.
+// Backpressure: Happens when writable stream is slower than readable, causing memory buildup.
+// 	•	pipe(): Safely connects readable → writable stream, automatically managing backpressure.
+// 	•	If not using .pipe(), you must manually pause/resume streams based on "drain".
+
+// 👉 Common Interview Question:
+// Q: “How does Node.js handle backpressure when streaming data?”
+// A (Pro):
+// “Backpressure occurs when data is produced faster than it can be consumed. In Node.js, 
+// using .pipe() between streams automatically manages backpressure by pausing the readable stream when the writable is full and resuming when it drains.
+//  Without .pipe(), we must manually check writable.write() and listen for the drain event. 
+// Buffers are used internally to hold chunks temporarily during this process.”
+
+// ⸻

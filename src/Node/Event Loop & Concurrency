@@ -1,0 +1,118 @@
+; 🚀 How Node.js is Single-Threaded (with Event Loop, I/O, and Workers)
+
+; 🧠 Core Idea
+; 	•	Node.js uses a single main thread (JavaScript thread) to execute application code.
+; 	•	This thread runs the Event Loop, which manages asynchronous operations.
+; 	•	Heavy I/O operations (like network calls, file reads, DB queries) are delegated to background workers (libuv’s thread pool), 
+;     so they don’t block the main thread.
+
+; ⸻
+
+; 1. 🟢 Event Loop & Non-Blocking I/O
+; 	•	Node.js runs on a single thread for executing JavaScript.
+; 	•	When you trigger an async task (e.g., fs.readFile, DB query, API call):
+; 	1.	The task is delegated to libuv’s thread pool or OS.
+; 	2.	The main thread (event loop) keeps processing other code.
+; 	3.	Once the task is done, its callback is queued in the Event Loop.
+; 	4.	The Event Loop picks up queued callbacks and executes them when the call stack is empty.
+; ⸻
+; 2. 🟡 Microtasks vs. Macrotasks in Event Loop
+
+; When a callback is queued, it isn’t executed immediately. The Event Loop has two main queues:
+; 	•	Microtasks Queue (High Priority)
+; 	•	Examples: process.nextTick(), Promise .then(), queueMicrotask().
+; 	•	Always executed immediately after the current operation (before macrotasks).
+; 	•	Macrotasks Queue (Normal Priority)
+; 	•	Examples: setTimeout, setInterval, setImmediate, I/O callbacks.
+; 	•	Executed after microtasks are cleared.
+
+; 👉 Execution order:
+; 	1.	Run current JavaScript code (call stack).
+; 	2.	Run all microtasks (Promises, nextTick).
+; 	3.	Pick and execute the next macrotask.
+; 	4.	Repeat
+
+; -------    
+; 3. 🔴 Example (Micro vs Macro)
+; -----------------------------------------
+; console.log("Start");
+
+; setTimeout(() => console.log("Macrotask: setTimeout"), 0);
+
+; Promise.resolve().then(() => console.log("Microtask: Promise"));
+
+; process.nextTick(() => console.log("Microtask: nextTick"));
+
+; console.log("End");
+; -----------------------------------------
+; // Output:
+; // Start
+; // End
+; // Microtask: nextTick
+; // Microtask: Promise
+; // Macrotask: setTimeout
+
+
+; \👉 Why?
+; 	•	JS executes synchronously first (Start, End).
+; 	•	Then microtasks (nextTick, Promise).
+; 	•	Finally, macrotasks (setTimeout).
+; -------    
+
+;  4. 🟣 Concurrency vs Parallelism
+; 	•	Concurrency: Event Loop + Micro/Macro queues handle many tasks efficiently on one thread.
+; 	•	Parallelism: True multi-core execution using Worker Threads or Clustering.
+
+
+
+
+
+; -------    
+;   5. 🟡 CPU-Intensive Tasks
+; 	•	Example: image processing, encryption, big loops.
+; 	•	These tasks block the single thread, since they’re synchronous.
+; 	•	Solution:
+; 	•	Use Worker Threads (introduced in Node v10.5) to run CPU-bound tasks in parallel.
+; 	•	Or move heavy work to microservices in other languages (C++, Go, etc.).
+
+; ⸻
+
+; 6. 🔴 Concurrency in Node.js
+; 	•	Even though Node.js has one main thread, it achieves concurrency via:
+; 	•	Event Loop → manages multiple tasks without blocking.
+; 	•	Non-blocking I/O → delegates I/O work to OS or libuv workers.
+; 	•	Worker Threads / Cluster → allows parallelism when required.
+
+; Concurrency ≠ Parallelism:
+; 	•	Concurrency: Node.js switches between multiple tasks efficiently (async, event loop).
+; 	•	Parallelism: Multiple tasks run literally at the same time on different CPU cores (via Workers or Clustering).
+
+; ⸻
+
+; 4. 📝 Interview-Friendly Analogy
+
+; Think of Node.js as a restaurant with one waiter.
+; 	•	The waiter takes an order (request).
+; 	•	If the dish requires slow cooking (I/O task), he gives it to the kitchen staff (thread pool).
+; 	•	While waiting, the waiter takes more orders.
+; 	•	When the dish is ready, the kitchen tells the waiter, who serves it.
+
+; This way, one waiter handles many customers without getting stuck.
+
+; ⸻
+
+; 5. ✅ Key Points to Say in Interview
+; 	•	Node.js is single-threaded in terms of executing JavaScript.
+; 	•	The Event Loop enables concurrency by delegating I/O tasks to libuv workers.
+; 	•	Node.js is best for I/O-intensive tasks (APIs, DB queries, file/network ops).
+; 	•	For CPU-intensive tasks, use Worker Threads or Clustering.
+
+; ⸻
+
+; 🔑 Sample Interview Answer (short & pro):
+
+; “Node.js is single-threaded because it runs JavaScript code on a single thread using the Event Loop. However, it achieves
+;  concurrency through non-blocking I/O. I/O tasks are delegated to the libuv thread pool, allowing the main thread to 
+;  continue handling other requests. This makes Node.js highly efficient for I/O-bound applications like APIs or real-time apps.
+;   For CPU-intensive tasks, Node.js provides Worker Threads and Clustering to leverage multiple cores. 
+;   So, Node is single-threaded for JavaScript execution but concurrent in handling multiple operations.”

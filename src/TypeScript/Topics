@@ -1,0 +1,71 @@
+ Top 10 TypeScript Concepts & Interview Questions
+
+ 1.1. Difference between TypeScript and JavaScript
+
+Concept:
+TypeScript is a superset of JavaScript that adds static typing, interfaces, generics, and advanced tooling. It compiles down to plain JavaScript.
+
+Q: What are the main differences between TypeScript and JavaScript?
+Best Answer:
+	•	TypeScript provides static type checking at compile time, JS checks only at runtime.
+	•	Supports interfaces, generics, enums, type aliases for better code safety.
+	•	Has modern tooling (IntelliSense, autocompletion, refactoring) that improves developer productivity.
+	•	Compiles to plain JavaScript, so it can run anywhere JS runs.
+
+⸻
+
+2. Types vs Interfaces
+
+Concept:
+Both define shapes of objects, but interfaces are extendable while types can combine using unions/intersections.
+
+Q: When should you use interface vs type?
+Best Answer:
+	•	Use interface when describing object shapes and want extendability (extends).
+	•	Use type when you need union, intersection, or more flexibility.
+👉 In practice: interfaces for contracts between components, types for complex transformations.
+interface User { id: number; name: string; }
+type ApiResponse = User | null;
+
+3.Genarics
+
+Concept:
+Generics let you write reusable, type-safe components.
+
+Q: Why are generics important in TypeScript? Can you give an example?
+Best Answer:
+Generics allow functions and classes to work with multiple types while preserving type safety. Example:
+function identity<T>(arg: T): T {
+  return arg;
+}
+const num = identity<number>(10); // type: number
+const str = identity("Hello");    // type: string
+
+4. Utility Types
+
+Concept:
+Built-in helpers (Partial, Pick, Omit, Readonly, Record, etc.) to transform types.
+
+Q: What are some useful utility types you’ve used?
+Best Answer:
+	•	Partial<T> → makes all properties optional
+	•	Pick<T, K> → picks only specific keys
+	•	Omit<T, K> → excludes keys
+	•	Record<K, T> → defines object map types
+interface User { id: number; name: string; age: number; }
+type UserPreview = Pick<User, "id" | "name">;
+
+5. Union vs Intersection Types
+
+Concept:
+	•	Union (|) = “OR” type
+	•	Intersection (&) = “AND” type
+
+Q: What’s the difference between union and intersection types?
+Best Answer:
+	•	Union = value can be one of many types.
+	•	Intersection = value must satisfy all types simultaneously.
+    type A = { name: string };
+type B = { age: number };
+type Person = A & B;  // must have both name & age
+

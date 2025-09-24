@@ -1,0 +1,124 @@
+1️⃣ Array Methods 
+
+Iteration & Transformation
+	•	forEach() → Loop over items (no return value, side effects only)
+	•	map() → Transform each element → returns new array
+	•	filter() → Select elements matching condition → returns new array
+	•	reduce() → Accumulate to single value (sum, product, object, etc.)
+	•	flat() / flatMap() → Flatten nested arrays
+
+⸻
+
+Searching
+	•	find() → First element matching condition
+	•	findIndex() → Index of first match
+	•	includes() → Check if value exists
+	•	some() → At least one element passes condition
+	•	every() → All elements pass condition
+	•	indexOf() / lastIndexOf() → Find by value (primitive)
+
+⸻
+
+Sorting & Reversing
+	•	sort() → Sorts in-place (needs compare fn for numbers)
+	•	reverse() → Reverses array in-place
+
+⸻
+
+Adding/Removing
+	•	push() / pop() → Add/remove from end
+	•	shift() / unshift() → Add/remove from start
+	•	splice() → Insert/remove in middle
+	•	slice() → Copy portion (non-mutating)
+	•	concat() → Merge arrays
+
+⸻
+
+Utility
+	•	join() → Convert array to string
+	•	Array.from() → Create array from iterable/string
+	•	Array.isArray() → Check if value is array
+
+
+; ------------Core Array Methods to Master---------->/
+
+Category                          Methods to Learn
+
+Iteration & Transform            map, filter, reduce, forEach, flat, flatMap
+Searching                       find, findIndex, includes, some, every
+Sorting & Reversing             sort, reverse
+Adding/Removing                 push, pop, shift, unshift, splice, slice, concat
+Utility                         join, Array.isArray, Array.from, fill
+
+
+; <-------------------------Iteration & Transform ------------->
+
+    ; // map() → 
+    Transform each element → returns new array
+
+    ; // filter() → 
+    Select elements matching condition → returns new array
+
+    ; // reduce() → 
+    Accumulate to single value (sum, product, object, etc.)
+
+    ; // flat() / flatMap() → 
+    Flatten nested arrays
+
+    ; // forEach() → 
+    Loop over items (no return value, side effects only)
+
+; <-------------------------Searching ----------------------------->
+
+const numbers = [2, 5, 7, 10];
+
+
+    ; // find() → 
+    First element matching condition => numbers.find(num => num > 5); // returns 7  
+
+
+    ; // findIndex() → 
+    Index of first match => numbers.findIndex(num => num > 1); // returns 0
+    ; // includes() → 
+    Check if value exists => numbers.includes(5); // returns true   
+    ; // some() → 
+    At least one element passes condition => numbers.some(num => num > 5); // returns true
+    ; // every() → 
+    All elements pass condition => numbers.every(num => num > 5); // returns false
+    ; // indexOf() / lastIndexOf() → 
+    Find by value (primitive) => numbers.indexOf(5); // returns 1
+
+; <-------------------------Sorting & Reversing ------------------->
+    ; // sort() → 
+    Sorts in-place (needs compare fn for numbers)  fruits.sort(); // ["apple", "banana"]
+    ; // reverse() → 
+    Reverses array in-place  fruits.reverse(); // ["banana", "apple"]
+
+; <-------------------------Adding/Removing ----------------------->
+
+const fruits = ["apple", "banana"];
+
+    ; // push() / pop() → 
+    Add/remove from end  fruits.push("mango"); // ["apple", "banana", "mango"]
+    fruits.pop(); // ["apple", "banana"]
+
+    ; // shift() / unshift() → 
+    Add/remove from start  fruits.unshift("mango"); // ["mango", "apple", "banana"]
+    fruits.shift(); // ["apple", "banana"]
+    ; // splice() → 
+    Insert/remove in middle  fruits.splice(3, 2, "orange", "grape"); // ["apple", "banana", "orange", "grape"]
+    fruits.splice(1, 2); // ["apple", "grape"] // removes 2 elements starting from index 1
+    fruits.splice(1, 0, "kiwi"); // ["apple", "kiwi", "grape"] // inserts "kiwi" at index 1 without removing any elements
+    ; // slice() →
+    Copy portion (non-mutating)  const citrus = fruits.slice(1,2); // ["kiwi"] // copies elements from index 1 to 2 (not including 2)
+    ; // concat() →
+    Merge arrays  const moreFruits = fruits.concat(["kiwi", "mango"]); // ["apple", "kiwi", "grape", "kiwi", "mango"]
+
+; <-------------------------Utility -------------------------------->
+
+    ; // join() → 
+    Convert array to string  fruits.join(", "); // returns "apple, kiwi, grape"
+    ; // Array.from() → 
+    Create array from iterable/array-like  Array.from("hello"); // returns ["h", "e", "l", "l", "o"]    
+    ; // Array.isArray() → 
+    Check if value is array  Array.isArray(fruits); // returns true

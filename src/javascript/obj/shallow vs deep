@@ -1,0 +1,51 @@
+🔹 Shallow Copy
+	•	Definition: A shallow copy copies only one level of the object. If the object has nested objects/arrays, only their references are copied — not the actual nested values.
+	•	Effect: Changes in nested objects/arrays in the copy will also reflect in the original, since they share references.
+	•	Example (JavaScript):
+
+    const obj = { 
+  name: "Srikanth", 
+  address: { city: "Hyderabad" } 
+};
+
+const shallowCopy = { ...obj }; // spread operator → shallow copy
+
+shallowCopy.name = "John"; // ✅ original unchanged
+shallowCopy.address.city = "Bangalore"; // ⚠ original ALSO changes
+
+console.log(obj.address.city); // "Bangalore"
+
+
+ Deep Copy
+	•	Definition: A deep copy copies all levels of the object, creating entirely new instances of nested objects/arrays.
+	•	Effect: The new object is completely independent — changes don’t affect the original.
+	•	Example (JavaScript)
+    const obj = { 
+  name: "Srikanth", 
+  address: { city: "Hyderabad" } 
+};
+
+// ✅ Deep copy (JSON method – but only works for simple data)
+const deepCopy = JSON.parse(JSON.stringify(obj));
+
+deepCopy.address.city = "Bangalore"; // only changes in copy
+
+console.log(obj.address.city); // "Hyderabad"
+
+
+
+⚡ Better ways (for complex structures, functions, Dates, Maps, Sets, etc.):
+	•	structuredClone(obj) (built-in in modern JS)
+	•	Libraries: lodash.cloneDeep(obj)
+
+⸻
+
+🔹 Quick Analogy
+	•	Shallow copy → Photocopying the first page of a book and leaving references for the rest.
+	•	Deep copy → Photocopying the entire book, including all nested chapters.
+
+⸻
+
+🔹 Interview-Smart Answer
+
+👉 “A shallow copy duplicates only the first layer of properties, while nested objects still share references with the original. A deep copy recursively duplicates all nested objects, making the new object completely independent. In JavaScript, shallow copy can be done with spread ... or Object.assign(), while deep copy can be achieved with structuredClone(), JSON.parse(JSON.stringify()), or libraries like lodash.cloneDeep.”

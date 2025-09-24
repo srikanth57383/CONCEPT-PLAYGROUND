@@ -1,0 +1,106 @@
+; 1. Sessions
+; 	•	What it is:
+; 	•	A session stores user authentication state on the server (in memory, Redis, DB).
+; 	•	Client stores only a session ID in a cookie.
+; 	•	On each request, server validates session ID and retrieves user data.
+; 	•	Flow:
+; 	1.	User logs in → Server creates a session record.
+; 	2.	Server sends session ID in a cookie.
+; 	3.	On each request → cookie is sent → server checks session store → identifies user.
+; 	•	Pros:
+; 	•	Secure (session data stays on server).
+; 	•	Easy to invalidate/logout.
+; 	•	Cons:
+; 	•	Doesn’t scale well (needs sticky sessions or centralized session store).
+; 	•	Interview Quote:
+; “Sessions are server-side authentication. The client holds only a session ID, and the server validates it against its session store.”
+
+
+
+
+
+; 2. JWT (JSON Web Token)
+; 	•	What it is:
+; 	•	A stateless authentication mechanism.
+; 	•	Token is signed (not encrypted) with secret or private key.
+; 	•	Contains user claims (payload like userId, roles).
+; 	•	Structure:
+;     header.payload.signature
+;     •	Header → algorithm (HS256, RS256).
+; 	•	Payload → user info (not sensitive like password).
+; 	•	Signature → to verify authenticity.
+
+; 	•	Flow:
+; 	1.	User logs in → Server generates JWT and sends it to client.
+; 	2.	Client stores it (localStorage, cookies, memory).
+; 	3.	On every request → client sends token in Authorization: Bearer <token>.
+; 	4.	Server verifies signature → if valid, trusts user.
+; 	•	Pros:
+; 	•	Stateless → server doesn’t store user sessions.
+; 	•	Works well with microservices & APIs.
+; 	•	Cons:
+; 	•	Hard to invalidate early (until token expiry).
+; 	•	Bigger token size.
+; 	•	Interview Quote:
+; “JWTs are stateless, self-contained tokens with claims. The server verifies them via signature, no DB lookup required.”
+
+
+
+
+
+
+; 3. OAuth 2.0 (Basics)
+; 	•	What it is:
+; 	•	A protocol for delegated authorization, not direct authentication.
+; 	•	Example: “Login with Google/GitHub”.
+; 	•	Instead of giving your password, you grant access via an authorization server.
+; 	•	Actors:
+; 	1.	Resource Owner → User.
+; 	2.	Client → App requesting access.
+; 	3.	Authorization Server → Issues tokens (e.g., Google, Facebook).
+; 	4.	Resource Server → API with user data.
+; 	•	Flow (Authorization Code Grant):
+; 	1.	User clicks “Login with Google”.
+; 	2.	Redirect to Google → user logs in and consents.
+; 	3.	Google redirects back with Authorization Code.
+; 	4.	App exchanges code for an Access Token.
+; 	5.	App uses Access Token to call Google APIs.
+; 	•	Pros:
+; 	•	Secure → no password sharing.
+; 	•	Widely used for 3rd-party logins.
+; 	•	Cons:
+; 	•	Implementation complexity.
+; 	•	Tokens must be secured properly.
+; 	•	Interview Quote:
+; “OAuth 2.0 is about delegated authorization. Instead of sharing credentials, you get tokens from an authorization server to access resources on behalf of the user.”
+
+
+
+
+
+
+
+; 🔥 Interview Tricky Qs & Answers
+
+; Q1: When to use Sessions vs JWT?
+; 	•	Sessions → Best for traditional server-rendered apps.
+; 	•	JWT → Best for stateless APIs, mobile apps, microservices.
+
+; Q2: How do you invalidate a JWT before expiry?
+; 	•	Options:
+; 	1.	Maintain a server-side blacklist (revoked tokens).
+; 	2.	Short-lived access token + refresh token strategy.
+
+; Q3: Is JWT encrypted?
+; 	•	No → It is signed. Payload is visible (base64). Use HTTPS + don’t store sensitive data.
+
+; Q4: OAuth vs JWT — difference?
+; 	•	OAuth is a protocol (delegation).
+; 	•	JWT is a token format often used inside OAuth.
+
+; ⸻
+
+; ⚡ Quick Summary for Interview:
+; 	•	Sessions → Server stores state, client stores session ID.
+; 	•	JWT → Stateless, client stores full token, server just verifies signature.
+; 	•	OAuth 2.0 → Delegated authorization (login with Google/Facebook).

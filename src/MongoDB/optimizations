@@ -1,0 +1,57 @@
+<!-- 1. Indexes
+
+Indexes make queries faster (like a book index).
+Without them, MongoDB scans every document (COLLSCAN).
+	•	Types of Indexes
+	•	Single Field → db.users.createIndex({ age: 1 })
+	•	Compound → db.users.createIndex({ age: 1, city: 1 })
+	•	Text Index → db.articles.createIndex({ content: "text" })
+	•	Unique Index → db.users.createIndex({ email: 1 }, { unique: true })
+	•	TTL Index → auto-delete docs → db.sessions.createIndex({ createdAt: 1 }, { expireAfterSeconds: 3600 })
+	•	Best Practices
+	•	Always index fields used in query filters, sorts, and joins (lookup).
+	•	Avoid over-indexing (slows down writes).
+	•	Use covered queries (index includes all queried fields).
+
+
+2. Aggregation
+
+Aggregation framework processes and transforms data in stages (like SQL’s GROUP BY + HAVING).
+	•	Common Stages
+	•	$match → filter documents early (uses indexes).
+	•	$group → group docs, do counts, sums, averages.
+	•	$project → reshape fields.
+	•	$sort → sort docs (use indexes if possible).
+	•	$lookup → joins between collections.
+	•	$facet → run multiple aggregations in one query.
+	•	Best Practices
+	•	Push $match and $project as early as possible.
+	•	Use $limit before $sort on large collections.
+	•	Avoid $lookup on huge collections → denormalize if needed.
+
+    3. Schema Design
+
+MongoDB is schema-less but design matters for performance.
+	•	Patterns
+	•	Embedding (store related data in same document):
+	•	Good for one-to-few, read-heavy workloads.
+	•	Example: store comments inside a post.
+	•	Referencing (store _id references):
+	•	Good for one-to-many, write-heavy workloads.
+	•	Example: userId inside orders.
+	•	Best Practices
+	•	Design based on query patterns, not just data structure.
+	•	Keep documents under 16MB limit.
+	•	Use pre-aggregated fields for analytics (counters).
+	•	Avoid deep nesting (slower queries, harder updates).
+
+
+📝 Interview Summary (Cheat Sheet)
+	•	Indexes → Speed up queries (COLLSCAN → IXSCAN). Use single, compound, unique, TTL. Avoid too many indexes.
+	•	Aggregation → MongoDB’s query pipeline. Push $match early, use $project wisely, minimize $lookup.
+	•	Schema Design → Optimize for access patterns. Use embedding for small, related data. Use referencing for large/many relations.
+
+👉 Example Interview Answer:
+“In MongoDB, optimizations mainly come from three areas: indexes to speed up queries, aggregation pipelines for efficient data processing, and schema design based on query patterns. I’d ensure frequently queried fields are indexed, push filtering early in aggregation, and choose embedding vs referencing depending on read/write patterns. This reduces query time and improves scalability.”
+
+⸻ -->

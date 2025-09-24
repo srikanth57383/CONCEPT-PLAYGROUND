@@ -1,0 +1,38 @@
+✅ When to choose MySQL (SQL Database)
+
+MySQL is a relational database → data is stored in tables with rows and columns.
+Use it when:
+	1.	Structured data & relationships → If your data has clear relationships (e.g., users, orders, payments).
+	2.	ACID transactions needed → Banking, finance, or any system where data consistency is critical.
+	3.	Fixed schema → You know the fields in advance (like name, email, salary).
+	4.	Complex queries & joins → Reporting, analytics, or dashboards where you run multi-table queries.
+	5.	Well-established ecosystem → Lots of tools, support, and mature community.
+
+📌 Example use cases:
+	•	Banking system (transactions must always balance).
+	•	E-commerce orders (products, customers, payments are relational).
+	•	HR or Payroll systems.
+
+⸻
+
+✅ When to choose MongoDB (NoSQL Database)
+
+MongoDB is a document database → data is stored in JSON-like documents.
+Use it when:
+	1.	Flexible schema → Your data structure may change often (add/remove fields easily).
+	2.	High scalability → You expect very large amounts of data and need horizontal scaling.
+	3.	Nested / unstructured data → User profiles, comments, logs, IoT sensor data.
+	4.	Fast reads/writes → Especially for non-transactional workloads.
+	5.	Agile development → You don’t want to spend time designing strict schemas early.
+
+📌 Example use cases:
+	•	Social media apps (posts, likes, comments → flexible & fast).
+	•	Real-time analytics or logging.
+	•	Content management systems.
+	•	Location-based apps (storing geospatial data).
+
+⸻
+
+🔑 Quick Decision Guide
+	•	If data consistency & relationships are most important → MySQL.
+	•	If flexibility & scalability are most important → MongoDB.

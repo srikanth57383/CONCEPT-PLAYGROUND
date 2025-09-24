@@ -1,0 +1,124 @@
+; 🔥 HTML Interview Questions & Answers
+
+; 1. What is the difference between HTML and HTML5?
+
+; ✅ Answer (Pro-level):
+; 	•	Doctype:
+; 	•	HTML → long and complicated <!DOCTYPE HTML PUBLIC …>
+; 	•	HTML5 → simple <!DOCTYPE html>
+; 	•	Structure:
+; 	•	HTML → relied on <div> for layout
+; 	•	HTML5 → semantic tags (<header>, <section>, <article>, <footer>) → improves SEO & accessibility
+; 	•	Forms:
+; 	•	HTML → limited inputs
+; 	•	HTML5 → new inputs (email, date, number, range, color) + attributes (required, pattern)
+; 	•	Media:
+; 	•	HTML → external plugins (Flash, Silverlight) for video/audio
+; 	•	HTML5 → native <audio> and <video>
+; 	•	APIs:
+; 	•	HTML → none
+; 	•	HTML5 → localStorage, sessionStorage, canvas, Geolocation, WebSockets, Drag & Drop, Web Workers
+; 	•	Performance:
+; 	•	HTML5 supports offline apps via AppCache/Service Workers
+; 	•	HTML lacked offline support
+
+; 👉 Short one-liner: “HTML5 is an improved version of HTML with semantic tags, native media, form enhancements, and APIs for offline storage & graphics.”
+
+; ⸻
+
+; 2. What are semantic tags and why are they important in HTML5?
+
+; ✅ Answer:
+; Semantic tags give meaning to the structure of a webpage.
+; Examples: <header>, <nav>, <section>, <article>, <footer>.
+; 	•	They improve SEO (search engines understand content better).
+; 	•	They improve Accessibility (A11Y) for screen readers.
+; 	•	They make the DOM easier for developers to maintain.
+<article>
+  <header><h2>Blog Title</h2></header>
+  <p>Post content...</p>
+  <footer>Author: Srikanth</footer>
+</article>
+
+
+3. Difference between async and defer in HTML5 <script> tag?
+
+✅ Answer:
+	•	async → Script loads independently and executes immediately (can block DOM). Best for analytics/ads.
+	•	defer → Script loads in parallel but executes after DOM is parsed. Best for app logic.
+
+👉 Example:
+<script src="analytics.js" async></script>
+<script src="app.js" defer></script>
+
+4. How does HTML5 improve form validation compared to older HTML?
+
+✅ Answer:
+	•	HTML5 added input types (email, number, url, date, color, range).
+	•	Built-in validation with attributes like required, pattern, min, max, step.
+	•	No JavaScript needed for basic validation.
+
+👉 Example:
+<form>
+  <input type="email" required placeholder="Enter your email">
+  <input type="number" min="1" max="10" step="1" placeholder="Enter a number between 1-10">
+  <button type="submit">Submit</button>
+</form>
+6. What is the difference between localStorage, sessionStorage, and cookies in HTML5?
+
+✅ Answer:
+	•	localStorage:
+	•	Stores data permanently (until cleared).
+	•	5–10 MB capacity.
+	•	sessionStorage:
+	•	Stores data for a session (clears on tab close).
+	•	5–10 MB capacity.
+	•	Cookies:
+	•	Small (4 KB).
+	•	Sent to the server with each request → network overhead.
+	•	Used for authentication/session tracking.
+
+👉 Example:
+// localStorage
+localStorage.setItem('key', 'value');
+// sessionStorage
+sessionStorage.setItem('key', 'value');
+// Cookies
+document.cookie = "key=value; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+⸻
+
+7. What’s new in HTML5 for multimedia support?
+
+✅ Answer:
+	•	<video> and <audio> → native support without plugins.
+	•	Attributes: controls, autoplay, muted, loop.
+	•	<track> for captions/subtitles (Accessibility).
+👉 Examples:
+<video controls>
+  <source src="video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>    
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+⸻
+
+8. What is the difference between block, inline, and inline-block elements?
+
+✅ Answer:
+	•	Block: Takes full width, starts new line (<div>, <section>).
+	•	Inline: Takes only content width, does not start new line (<span>, <a>).
+	•	Inline-block: Behaves like inline, but allows block properties (<button>, <img>).
+
+⸻
+
+🎯 Pro-Tips for You (4 YOE MERN)
+	•	Don’t just say “HTML5 introduced new tags.” → Instead explain why (SEO, performance, A11Y).
+	•	Link HTML5 improvements to React/SPA world:
+	•	<main> and <header> improve semantic structure in React apps.
+	•	localStorage often used in JWT authentication.
+	•	<canvas> is often wrapped in React libraries (e.g., Chart.js).
+    •	Understand how async/defer impact React app loading performance.
+    •	Know how HTML5 forms reduce the need for custom validation in React forms.
+⸻

@@ -1,0 +1,78 @@
+✅ Case 1: API Rate Limiter (Scalability & Abuse Protection)
+
+Scenario:
+Your API started receiving spam requests from certain clients, causing downtime.
+
+What you did:
+	•	Implemented rate limiting middleware using Redis (because it’s fast and centralized).
+	•	Used a token bucket algorithm → Each client gets a fixed number of tokens per minute, every request consumes a token.
+	 If bucket is empty, request blocked with 429 status.
+	•	Added IP + user-based throttling (so multiple users behind one IP aren’t unfairly blocked).
+	•	Logged blocked attempts for monitoring.
+
+Pro Outcome:
+	•	Protected API from abuse.
+	•	Kept system stable under 10x traffic surge.
+	•	Reduced downtime complaints.
+
+⸻
+
+✅ Case 2: Node App Slowing Down Under Heavy Load
+
+Scenario:
+During peak hours, Node server response time increased drastically.
+
+What you did:
+	1.	Profiling using clinic.js & Node’s built-in –inspect to identify bottlenecks.
+	2.	Found a blocking operation (big JSON parsing + Mongo aggregation) was freezing event loop.
+	3.	Fixed by:
+	•	Moving heavy task to a Worker Thread.
+	•	Using MongoDB indexes to speed up queries.
+	•	Implementing caching layer (Redis) for frequently accessed data.
+	4.	Deployed app with PM2 cluster mode → utilized multiple CPU cores.
+
+Pro Outcome:
+	•	Average response time dropped from 1.5s → 200ms.
+	•	Server handled 3x concurrent users without crashing.
+
+⸻
+
+✅ Case 3: Securing a REST API
+
+Scenario:
+A client reported unauthorized access to sensitive API endpoints.
+
+What you did:
+	•	Implemented JWT-based authentication with refresh tokens.
+	•	Secured routes with role-based middleware (isAdmin, isUser).
+	•	Added input validation (Joi / express-validator) to prevent SQL/NoSQL injection.
+	•	Applied Helmet.js (security headers), CORS policy, and rate limiting for brute-force login attacks.
+	•	Ensured passwords hashed with bcrypt + salt.
+
+Pro Outcome:
+	•	Closed all security loopholes.
+	•	API passed penetration testing with zero critical vulnerabilities.
+	•	Client gained trust in system’s security.
+
+⸻
+
+✅ Case 4: File Uploads & Streaming
+
+Scenario:
+Users were uploading large files (100MB+) which caused memory crashes.
+
+What you did:
+	•	Switched from naive file upload (buffer in memory) → to streaming upload with multer + busboy.
+	•	Implemented chunked uploads for very large files.
+	•	Stored directly to AWS S3 / GCP bucket without hitting Node’s memory.
+	•	Added a progress tracking API (client gets % uploaded).
+	•	Used stream pipelines to process files while uploading (e.g., virus scan, compression).
+
+Pro Outcome:
+	•	Upload success rate went from 60% → 99.9%.
+	•	Server memory stable even with multiple 200MB uploads.
+	•	Improved UX with progress bar and resumable uploads.
+
+⸻
+
+✨ These 4 cases cover: Scalability, Performance, Security, and File Handling → the exact areas interviewers love to test in Node.js.

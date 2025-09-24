@@ -1,0 +1,64 @@
+Core Object Methods to Master
+
+Objects are key-value pairs.
+
+🔹 Object Creation & Check
+// ---------------------------------------------------------      🔹 Object Creation & Check     ------------------------------------------------------>1
+
+let obj = { name: "John", age: 25 };
+
+// Object.keys() → Array of keys
+Object.keys(obj); // ["name", "age"]
+
+// Object.values() → Array of values
+Object.values(obj); // ["John", 25]
+
+// Object.entries() → Array of [key, value]
+Object.entries(obj); // [["name","John"], ["age",25]]
+
+// Object.fromEntries() → Convert back to object
+Object.fromEntries([["name","John"], ["age",25]]); // {name:"John", age:25}
+
+// hasOwnProperty()
+obj.hasOwnProperty("name"); // true
+// ---------------------------------------------------------       🔹 🔹 Object Manipulation.     ------------------------------------------------------>2
+
+
+// assign() → Copy / merge objects
+let target = { a: 1 };
+let source = { b: 2 };
+Object.assign(target, source); // {a:1, b:2}
+
+// spread (...) → modern way
+let merged = { ...obj, city: "NY" }; 
+// {name:"John", age:25, city:"NY"}
+
+
+🔹 Object Freezing & Sealing
+// ---------------------------------------------------------       🔹 Object Freezing & Sealing.     ------------------------------------------------------>3
+let person = { name: "Alice" };
+
+Object.freeze(person); // no add/remove/modify
+person.name = "Bob"; // ❌ ignored
+
+Object.seal(person); // can modify, but not add/remove
+person.name = "Bob"; // ✅ works
+delete person.name;  // ❌ not allowed
+
+
+
+🔹 Prototype & Introspection
+// ---------------------------------------------------------       🔹 Prototype & Introspection.     ------------------------------------------------------>4
+Object.getPrototypeOf(obj); // returns prototype
+Object.isFrozen(obj); // check frozen
+Object.isSealed(obj); // check sealed
+// Object.getOwnPropertyDescriptor() → Get property details
+Object.getOwnPropertyDescriptor(obj, "name"); // {value: "John", writable: true, enumerable: true, configurable: true}  
+
+
+📌 Core Object Methods to Master:
+	•	Keys/Values/Entries → Object.keys, Object.values, Object.entries
+	•	Conversions → Object.fromEntries
+	•	Copy/Merge → Object.assign, spread ...
+	•	Sealing/Freezing → Object.freeze, Object.seal, Object.isFrozen, Object.isSealed
+	•	Utilities → hasOwnProperty, getPrototypeOf

@@ -1,0 +1,78 @@
+// ; 🔹 JavaScript – Callbacks vs Promises vs Async/Await (Interview Notes)
+
+// ; 1. Callbacks
+// ; 	•	Definition: A callback is a function passed as an argument to another function, executed later once the task is completed.
+// ; 	•	Use case: Handling asynchronous tasks like reading files, making API calls, timers.
+// ; 	•	Problem: Leads to Callback Hell (nested callbacks → hard to read, maintain, and debug).
+
+// ; Example:
+// ; function fetchData(callback) {
+// ;   setTimeout(() => {
+// ;     callback("Data received");
+// ;   }, 1000);
+// ; }
+
+// ; fetchData((data) => {
+// ;   console.log(data); // Data received
+// ; });
+// ; Callback Hell
+// ; doTask1(() => {
+// ;   doTask2(() => {
+// ;     doTask3(() => {
+// ;       console.log("All tasks done");
+// ;     });
+// ;   });
+// ; });
+
+
+
+// ; 2. Promises
+// ; 	•	Definition: An object representing eventual completion (resolve) or failure (reject) of an async operation.
+// ; 	•	States:
+// ; 	•	Pending
+// ; 	•	Fulfilled → resolve(value)
+// ; 	•	Rejected → reject(reason)
+// ; 	•	Advantages over Callbacks: Avoids callback hell, provides chaining (.then(), .catch()).
+// ; Example:
+// ; let promise = new Promise((resolve, reject) => {
+// ;   setTimeout(() => resolve("Success!"), 1000);
+// ; });
+
+// ; promise
+// ;   .then(result => console.log(result))
+// ;   .catch(err => console.error(err));
+
+// ;   Useful Promise methods:
+// ; 	•	Promise.all([p1, p2, ...]) → Waits for all to resolve, rejects if any fail.
+// ; 	•	Promise.allSettled([p1, p2, ...]) → Waits for all, gives status of each.
+// ; 	•	Promise.any([p1, p2, ...]) → Returns first fulfilled promise.
+// ; 	•	Promise.race([p1, p2, ...]) → Returns first settled (resolve or reject).
+
+// ; ⸻
+// ; 3. Async/Await
+// ;     •	Definition: Syntactic sugar over Promises, allows writing async code that looks synchronous.
+// ;     •	'async' keyword before a function makes it return a Promise.
+// ;     •	'await' keyword pauses execution until the Promise resolves or rejects.
+// ;     •	Advantages: Cleaner, more readable code, easier error handling with try/catch.
+// ;     •	Rules:
+// ; 	     •	async function → always returns a Promise.
+// ; 	     •	await pauses execution until the promise resolves.
+// ; Example:            
+
+// async function fetchData() {
+//   try {
+//     let response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+//     let data = await response.json();
+//     console.log(data);
+//   } catch (error) {
+//     console.error("Error:", error);
+//   }
+// }
+
+// fetchData();
+
+// ; IMPORTANCE:
+// ; 	•	Callbacks were the first async solution, but led to callback hell.
+// ; 	•	Promises solved readability issues, introduced chaining & error handling.
+// ; 	•	Async/Await is syntactic sugar over promises, gives clean, synchronous-like code.
+// ; 	•	All 3 do the same job, just different syntax & readability.

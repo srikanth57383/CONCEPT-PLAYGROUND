@@ -1,0 +1,41 @@
+Node.js interview questions often cover a range of topics, from fundamental concepts to more advanced architectural considerations and best practices.
+Fundamental Concepts:
+What is Node.js and its core principles? Explain its event-driven, non-blocking I/O model and how it leverages the V8 JavaScript engine.
+Explain the Event Loop in Node.js. Describe its role in handling asynchronous operations and managing callbacks.
+What are callbacks and how do they work in Node.js? Discuss their use in asynchronous programming and potential issues like "callback hell."
+What are Promises and how do they improve upon callbacks? Explain their states and how they provide a more structured approach to asynchronous code.
+What is npm and its purpose? Explain its role as a package manager and its functionalities for managing project dependencies.
+Explain module.exports and exports in Node.js. Differentiate their usage in defining and exporting modules.
+What is REPL in Node.js? Describe its functionality as a Read-Eval-Print Loop.
+Intermediate Concepts:
+What are streams in Node.js?
+Discuss their types (Readable, Writable, Duplex, Transform) and their benefits for handling large data.
+Explain the concept of middleware in Express.js.
+Describe its role in processing requests and responses in a web application.
+Differentiate between setImmediate(), setTimeout(), and process.nextTick() in the Event Loop.
+Explain their execution order and use cases.
+How do you handle errors and exceptions in Node.js applications?
+Discuss error-first callbacks, try-catch blocks, and error handling middleware.
+What is the purpose of package.json?
+Explain its key fields and how it manages project metadata and dependencies.
+Advanced Concepts and Best Practices:
+How does clustering work in Node.js?
+Explain its use for leveraging multi-core CPUs and improving application scalability.
+Discuss best practices for securing Node.js applications.
+Cover topics like input validation, authentication, authorization, and protecting against common vulnerabilities.
+How do you handle database interactions in Node.js?
+Discuss connecting to databases (e.g., MongoDB, PostgreSQL) and using ORMs/ODMs.
+Explain how to optimize the performance of a Node.js application.
+Discuss techniques like caching, load balancing, and preventing Event Loop blocking.
+Describe different approaches to testing Node.js applications.
+Cover unit testing, integration testing, and end-to-end testing frameworks.
+How do you manage environment variables in Node.js?
+Discuss techniques for configuring applications for different environments.
+
+
+
+
+
+
+
+https://www.geeksforgeeks.org/node-js/node-interview-questions-and-answers/

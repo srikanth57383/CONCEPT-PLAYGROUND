@@ -1,5 +1,5 @@
 // ThemeToggle.tsx
-import { useTheme } from "../../hooks/useTheme"
+import { useTheme } from "../../react/hooks/useTheme"
 
 export const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme()
