@@ -1,0 +1,173 @@
+JavaScript (10 Questions)
+1. Explain the JavaScript Event Loop.
+Call Stack
+Web APIs
+Callback Queue
+Microtask Queue
+Promise vs setTimeout execution order
+2. Difference between var, let, and const.
+Scope
+Hoisting
+Reassignment
+Temporal Dead Zone
+3. Explain Closures with a real-world example.
+Private variables
+Memoization
+Event handlers
+4. What is Hoisting?
+Function declaration
+Function expression
+Variables
+TDZ
+5. Explain this keyword.
+
+Different behavior in:
+
+Normal function
+Arrow function
+Object method
+Class
+Event handler
+6. Difference between:
+==
+===
+Object.is()
+7. Explain Promises and Async/Await.
+Promise chaining
+Error handling
+Promise.all()
+Promise.allSettled()
+Promise.any()
+Promise.race()
+8. Debouncing vs Throttling
+
+Implementation examples and use cases.
+
+9. Explain Memory Leaks in JavaScript.
+
+Examples:
+
+Event listeners
+Timers
+Closures
+Detached DOM
+10. Explain Prototype and Prototypal Inheritance.
+React.js (10 Questions)
+11. Explain React Rendering Lifecycle.
+Initial render
+Re-render
+Commit phase
+12. Virtual DOM vs Real DOM.
+13. Explain React Fiber.
+14. Difference between:
+useEffect
+useLayoutEffect
+useInsertionEffect
+15. When does React re-render a component?
+State
+Props
+Context
+Parent rendering
+
+How to prevent unnecessary renders?
+
+16. Explain React.memo(), useMemo(), and useCallback().
+
+Know when not to use them.
+
+17. Controlled vs Uncontrolled Components.
+18. State Management
+
+Compare:
+
+Context API
+Redux Toolkit
+Zustand
+Jotai
+
+When should each be used?
+
+19. Explain React Suspense.
+Lazy Loading
+Streaming
+Data fetching (React 19)
+20. React Performance Optimization
+
+Discuss:
+
+Code splitting
+Lazy loading
+Memoization
+Virtualization
+Bundle optimization
+Image optimization
+Next.js (10 Questions)
+21. Difference between App Router and Pages Router.
+22. Explain Server Components vs Client Components.
+
+When should each be used?
+
+23. What is Hydration?
+
+Explain hydration mismatch and how to avoid it.
+
+24. Explain SSR, SSG, ISR, and CSR.
+
+Know when each rendering strategy is appropriate.
+
+25. Explain Server Actions.
+
+Why are they replacing many API routes?
+
+26. Data Fetching in Next.js
+fetch()
+cache
+revalidate
+no-store
+force-cache
+27. Route Handlers vs API Routes.
+28. Middleware in Next.js.
+
+Common use cases:
+
+Authentication
+Redirects
+Geo-based routing
+29. Authentication in Next.js
+
+How would you implement:
+
+JWT
+OAuth
+Session
+Protected routes
+30. How do you optimize a large Next.js application?
+
+Cover topics such as:
+
+Dynamic imports
+Image optimization
+Font optimization
+Metadata API
+Caching
+Streaming
+Edge Runtime
+Bundle analysis
+Bonus (Frequently Asked in 2026)
+Explain React 19 features.
+What are Server Actions?
+What is Partial Prerendering (PPR)?
+How does React Compiler work?
+Explain Suspense for Data Fetching.
+How do you prevent unnecessary API calls?
+Explain stale closures in React.
+Difference between useRef and useState.
+Explain React Context performance issues.
+How would you build a scalable frontend architecture?
+Design an infinite scroll component.
+Build a reusable Data Table component.
+Explain optimistic UI updates.
+How do you implement role-based access control (RBAC) in React?
+Explain WebSockets vs Server-Sent Events (SSE).
+
+These questions cover the core topics that interviewers at product companies and startups commonly focus on for mid-level (3–6 years) React/Next.js developers in 2026, with an emphasis on fundamentals, rendering, performance optimization, and modern Next.js App Router features.
