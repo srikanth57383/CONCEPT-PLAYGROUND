@@ -1,0 +1,161 @@
+AI / GenAI Roadmap for Full-Stack AI Engineer
+
+Target Profile: 5+ years Full-Stack Engineering + strong hands-on AI/GenAI application development
+
+Roadmap Overview
+
+Priority: LLM Fundamentals → RAG → AI Agents → MCP → Production AI → Multimodal AI → Fine-tuning Concepts
+
+Phase 1 — LLM Fundamentals
+
+Tokens and context windows
+
+Prompt engineering
+
+Temperature and Top-P
+
+Embeddings
+
+Structured JSON output / JSON Schema
+
+Function and tool calling
+
+Streaming
+
+Model selection
+
+Cost and latency
+
+Hallucinations
+
+POC: AI Chat App — Next.js + FastAPI + LLM
+
+Phase 2 — RAG ⭐
+
+PDF/DOCX parsing
+
+Chunking and chunk overlap
+
+Embeddings
+
+Vector databases
+
+Similarity search
+
+Metadata filtering
+
+Hybrid search
+
+Reranking
+
+Context construction
+
+Citations
+
+RAG evaluation
+
+POC: Enterprise AI Knowledge Assistant / Chat with Documents
+
+Phase 3 — AI Agents ⭐
+
+Agent vs chatbot
+
+Planning and reasoning
+
+Tool calling
+
+Agent state and memory
+
+Multi-step workflows
+
+Human-in-the-loop
+
+MCP (Model Context Protocol)
+
+POC: AI Developer / Research Agent
+
+Phase 4 — Production AI
+
+AI and RAG evaluation
+
+Guardrails
+
+Prompt versioning
+
+Observability and tracing
+
+Token and cost monitoring
+
+Caching
+
+Rate limiting
+
+Async workers
+
+AI security and prompt injection
+
+Tools: LangSmith, Ragas/DeepEval, Redis, Celery
+
+Phase 5 — Multimodal AI
+
+Vision LLMs
+
+OCR
+
+Speech-to-text
+
+Audio/video AI
+
+MediaPipe
+
+TensorFlow.js / TFLite
+
+Leverage existing TensorFlow.js, TFLite and MediaPipe experience.
+
+Phase 6 — Fine-tuning Concepts
+
+Fine-tuning vs RAG
+
+Instruction tuning
+
+LoRA
+
+QLoRA
+
+Dataset preparation
+
+When fine-tuning is appropriate
+
+Focus on concepts; do not spend months training models from scratch.
+
+Recommended Core Stack
+
+Frontend: React, Next.js, TypeScript, Tailwind CSS
+
+Backend: Python, FastAPI, Node.js
+
+LLMs: OpenAI, Gemini, Claude
+
+RAG: LangChain, Qdrant, PostgreSQL + pgvector
+
+Agents: LangGraph, MCP, tool calling
+
+Document Processing: PyMuPDF, python-docx
+
+Infrastructure: Docker, Redis, Celery, AWS/GCP, GitHub Actions
+
+Evaluation: LangSmith, Ragas, DeepEval
+
+Existing AI Advantage: TensorFlow.js, TFLite, MediaPipe
+
+Portfolio POC Sequence
+
+1. AI Chat App → 2. Enterprise RAG Knowledge Assistant → 3. AI Agent → 4. Add MCP + tools → 5. Add evaluation, observability and production controls → 6. Add multimodal capabilities
+
+Interview Goal
+
+Be able to explain and build an end-to-end AI system: document ingestion, retrieval, LLM generation, tool calling, agents, evaluation, security, streaming, scalability, cost optimization and cloud deployment.
+
+Final Positioning
+
+Senior Full-Stack AI Engineer — React/Next.js + Node.js/FastAPI + LLMs + RAG + Agents + MCP + Vector Databases + AI Evaluation + AWS/GCP + Docker/CI/CD
