@@ -1,0 +1,105 @@
+#	Interview Question	What you should be able to explain
+1	What is an LLM, and how does it generate an answer?	Tokens → context → transformer → next-token prediction → response
+2	What is RAG and why do we need RAG if we already have an LLM?	LLM knowledge vs external/private knowledge, hallucination, up-to-date data
+3	Explain the complete RAG pipeline from document upload to final answer.	Document → Parse → Chunk → Embedding → Vector DB → Retrieve → Context → LLM → Answer
+4	What are chunks and why do we split documents into chunks?	Context limits, retrieval accuracy, chunk size, overlap
+5	How do you decide chunk size and chunk overlap?	500 tokens, 100 overlap as an example; document structure and retrieval quality
+6	What is an embedding? How is it different from the original text?	Text → numerical vector; semantic meaning; similarity search
+7	What is a vector database and how does similarity search work?	Embeddings, vector storage, cosine/distance search, top-K
+8	Why would you use hybrid search instead of only vector search?	Semantic search + keyword search; exact legal terms, names, IDs, etc.
+9	How would you improve poor retrieval results in a RAG system?	Chunking, embeddings, metadata filters, hybrid search, reranking, query rewriting
+10	What is reranking and why is it useful?	Initial retrieval → reranker → better Top-K context
+11	How do metadata filters work in RAG?	document_id, source_type, page, organization, permissions, date, etc.
+12	How would you implement access control in a RAG system?	Authorization during retrieval/query, not retrieving everything and filtering afterward
+13	How do you prevent hallucinations in a RAG application?	Grounding, strict prompts, citations, confidence/evaluation, "answer only from context"
+14	How do you provide citations with an LLM-generated answer?	Keep document/page/chunk metadata → retrieve → pass metadata to LLM → return citations
+15	What happens if the vector database returns irrelevant documents?	Detection → threshold/reranking → fallback → "I don't have enough information"
+16	What is LangChain and why would you use it?	Components for loaders, splitters, embeddings, retrievers, LLMs, chains
+17	What is LangGraph and how is it different from LangChain?	Stateful workflows/agents, nodes, edges, loops, branching, memory
+18	How would you reduce LLM/Claude token usage and cost?	Smaller context, Top-K tuning, chunk optimization, summarization, caching, model selection
+19	How would you make a RAG system production-ready?	Redis/cache, async ingestion, queues, monitoring, evaluation, rate limiting, security
+20	Design a RAG system that handles millions of documents and high concurrent queries.	API → retrieval service → vector DB → cache → queues → workers → scaling → monitoring
+The most important diagram to remember
+
+For an interview, you should be able to draw this without looking at notes:
+
+                 USER
+                   │
+                   ▼
+          ┌─────────────────┐
+          │ Frontend        │
+          │ React / Next.js │
+          └────────┬────────┘
+                   │
+                   ▼
+          ┌─────────────────┐
+          │ Backend         │
+          │ FastAPI / Node  │
+          └────────┬────────┘
+                   │
+          ┌────────┴─────────┐
+          │                  │
+          ▼                  ▼
+    DOCUMENT FLOW        QUERY FLOW
+          │                  │
+          ▼                  ▼
+       Parse             User Question
+          │                  │
+          ▼                  ▼
+       Chunk             Embedding
+          │                  │
+          ▼                  ▼
+      Embedding          Retrieve
+          │                  │
+          ▼                  ▼
+    Vector Database     Metadata Filter
+          │                  │
+          │                  ▼
+          │              Hybrid Search
+          │                  │
+          │                  ▼
+          │               Rerank
+          │                  │
+          └──────────┐       ▼
+                     │    Context
+                     │       │
+                     └───────┤
+                             ▼
+                           LLM
+                             │
+                             ▼
+                    Answer + Citations
+                             │
+                             ▼
+                       Frontend UI
+For your interview preparation, learn these in this order
+
+Level 1 — LLM basics
+
+Tokens → Context Window → Prompt → Temperature → Streaming → Tool Calling
+
+↓
+
+Level 2 — RAG
+
+Documents → Parsing → Chunks → Embeddings → Vector DB → Similarity Search
+
+↓
+
+Level 3 — Better RAG
+
+Metadata → Hybrid Search → Reranking → Query Rewriting → Citations → Evaluation
+
+↓
+
+Level 4 — Frameworks
+
+LangChain → LangGraph → Agents → Memory → Tools
+
+↓
+
+Level 5 — Production
+
+Caching → Redis → Queues → Async Workers → Rate Limiting → Monitoring → Security → Scaling
+
+For your level, I would especially prepare questions 3, 5, 7, 8, 9, 12, 13, 18, 19 and 20 because those can turn into deeper follow-up questions in a Full-Stack + AI interview.
